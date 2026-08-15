@@ -11,10 +11,6 @@ interface ImportMetaEnv {
   /** Project links. Left undefined, the matching button is hidden rather than faked. */
   readonly VITE_HASINO_LIVE_URL?: string
   readonly VITE_HASINO_REPO_URL?: string
-  readonly VITE_DOCDOOR_LIVE_URL?: string
-  readonly VITE_DOCDOOR_REPO_URL?: string
-  readonly VITE_PORTFOLIO_LIVE_URL?: string
-  readonly VITE_PORTFOLIO_REPO_URL?: string
 }
 
 interface ImportMeta {

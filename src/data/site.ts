@@ -24,7 +24,7 @@ export const profile = {
     highlight: ['Code', 'AI', 'Real World Problems'],
   },
   subheadline:
-    'I build full-stack products, explore AI, and sharpen my problem solving through competitive programming — taking ideas from architecture all the way to deployment.',
+    "I'm building a full-stack product, exploring AI, and sharpening my problem solving through competitive programming — taking an idea from architecture all the way to deployment.",
   interests: [
     'Full-stack development',
     'Backend engineering',
@@ -161,11 +161,13 @@ export type Project = {
   name: string
   tagline: string
   description: string
-  /** Renders the "Flagship Project" badge and the larger card treatment. */
-  flagship?: boolean
+  /** Short badge on the card — e.g. "Currently Building". Omit for no badge. */
+  badge?: string
+  /** One line under the badge on where the work actually stands. */
   status: string
   tech: string[]
-  features: string[]
+  /** What's being built. Framed as scope in progress, not shipped features. */
+  buildingNow: string[]
   liveUrl: string | null
   repoUrl: string | null
 }
@@ -176,9 +178,9 @@ export const projects: Project[] = [
     name: 'Hasino',
     tagline: 'Salon discovery & booking platform',
     description:
-      'A salon discovery and booking platform connecting customers with salons and salon owners — a customer app, an owner panel and an admin panel over one role-aware backend.',
-    flagship: true,
-    status: 'Primary product · in active development',
+      'Currently building Hasino — a salon discovery and booking platform focused on making salon bookings simpler for customers and salon owners.',
+    badge: 'Currently Building',
+    status: 'In active development · not finished',
     tech: [
       'React',
       'Node.js',
@@ -190,58 +192,16 @@ export const projects: Project[] = [
       'Capacitor',
       'Render',
     ],
-    features: [
-      'Customer mobile app (Android via Capacitor)',
-      'Salon owner panel with onboarding & services',
-      'Admin panel with role-based access',
-      'Service selection and cart flow',
-      'Booking, rescheduling and no-show handling',
-      'Chair-based booking capacity',
-      'Salon-specific data isolation',
-      'Clerk authentication across every role',
+    buildingNow: [
+      'Customer booking flow — discovery through to a confirmed slot',
+      'Salon owner panel for onboarding and managing services',
+      'Role-based access across customer, owner and admin',
+      'Chair-based capacity so a salon cannot be double-booked',
+      'Authentication with Clerk, data in PostgreSQL via Prisma',
+      'An Android build of the customer app through Capacitor',
     ],
     liveUrl: fromEnv(env.VITE_HASINO_LIVE_URL),
     repoUrl: fromEnv(env.VITE_HASINO_REPO_URL),
-  },
-  {
-    id: 'docdoor',
-    name: 'DocDoor',
-    tagline: 'OPD booking & live queue management',
-    description:
-      'A digital OPD booking and queue management platform that helps clinics manage patient bookings and live queues — cutting the waiting-room guesswork for patients and receptionists alike.',
-    status: 'Product build',
-    tech: ['React', 'Next.js', 'Node.js', 'PostgreSQL', 'Prisma', 'Socket.io'],
-    features: [
-      'Online OPD booking for patients',
-      'Clinic / hospital registration',
-      'Live queue management',
-      'Estimated waiting time',
-      'Receptionist panel',
-      'Doctor / clinic panel',
-      'Booking management & notifications',
-      'Payment integration concepts',
-    ],
-    liveUrl: fromEnv(env.VITE_DOCDOOR_LIVE_URL),
-    repoUrl: fromEnv(env.VITE_DOCDOOR_REPO_URL),
-  },
-]
-
-/**
- * "More Projects" — append to this array as new work lands.
- * The UI is fully data-driven, so nothing else needs to change.
- */
-export const moreProjects: Project[] = [
-  {
-    id: 'portfolio',
-    name: 'Developer Portfolio',
-    tagline: 'This site',
-    description:
-      'A dark-first portfolio built as a real product rather than a template — data-driven content, motion that stays out of the way, and an accessible, responsive layout.',
-    status: 'Live',
-    tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion'],
-    features: ['Data-driven content layer', 'Reduced-motion aware animation', 'Responsive & keyboard accessible'],
-    liveUrl: fromEnv(env.VITE_PORTFOLIO_LIVE_URL),
-    repoUrl: fromEnv(env.VITE_PORTFOLIO_REPO_URL),
   },
 ]
 
@@ -307,14 +267,10 @@ export const timeline: Milestone[] = [
     description: 'Relational modelling with PostgreSQL and Prisma, plus the migrations and constraints that keep data honest.',
   },
   {
-    id: 'docdoor',
-    title: 'Built DocDoor',
-    description: 'Turned a real clinic problem into an OPD booking and live queue management product.',
-  },
-  {
     id: 'hasino',
     title: 'Started building Hasino',
-    description: 'A salon discovery and booking platform — customer app, owner panel and admin panel on one backend.',
+    description:
+      'A salon discovery and booking platform for customers and salon owners — the project I spend most of my build time on.',
   },
   {
     id: 'aiexplore',
@@ -323,8 +279,8 @@ export const timeline: Milestone[] = [
   },
   {
     id: 'ongoing',
-    title: 'Still shipping, still solving',
-    description: 'Competitive programming alongside product work — 350+ problems solved and counting.',
+    title: 'Still building, still solving',
+    description: 'Competitive programming alongside the build — 350+ problems solved and counting.',
   },
 ]
 

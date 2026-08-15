@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Check, Star } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import type { Project } from '../data/site'
 import { ButtonLink, DisabledButton } from './ui/Button'
 import { GithubIcon } from './ui/BrandIcons'
 
 type ProjectCardProps = {
   project: Project
-  /** Flagship cards get the full-width, two-column treatment. */
+  /** Featured cards get the full-width, two-column treatment. */
   featured?: boolean
   index?: number
 }
@@ -39,10 +39,14 @@ export function ProjectCard({ project, featured = false, index = 0 }: ProjectCar
       <div className={`relative ${featured ? 'grid gap-10 lg:grid-cols-[1.05fr_1fr]' : ''}`}>
         <div>
           <div className="flex flex-wrap items-center gap-3">
-            {project.flagship && (
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-accent-400/30 bg-accent-500/10 px-3 py-1 font-mono text-[11px] tracking-wider text-accent-400 uppercase">
-                <Star size={11} aria-hidden="true" />
-                Flagship Project
+            {project.badge && (
+              <span className="inline-flex items-center gap-2 rounded-full border border-accent-400/30 bg-accent-500/10 px-3 py-1 font-mono text-[11px] tracking-wider text-accent-400 uppercase">
+                {/* Slow pulse — reads as "in progress" without shouting */}
+                <span aria-hidden="true" className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-400 opacity-60" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent-400" />
+                </span>
+                {project.badge}
               </span>
             )}
             <span className="font-mono text-[11px] tracking-wider text-faint uppercase">
@@ -118,15 +122,15 @@ export function ProjectCard({ project, featured = false, index = 0 }: ProjectCar
         {/* Key features — a side panel when featured, stacked otherwise */}
         <div className={featured ? '' : 'mt-8 border-t border-white/5 pt-6'}>
           <h4 className="font-mono text-[11px] tracking-widest text-faint uppercase">
-            Key features
+            What I'm building
           </h4>
           <ul className={`mt-4 grid gap-2.5 ${featured ? '' : 'sm:grid-cols-2'}`}>
-            {project.features.map((feature) => (
-              <li key={feature} className="flex items-start gap-2.5 text-sm text-slate-300">
-                <Check
-                  size={15}
+            {project.buildingNow.map((feature) => (
+              <li key={feature} className="flex items-start gap-3 text-sm text-slate-300">
+                {/* A ring, not a checkmark — none of this is signed off yet */}
+                <span
                   aria-hidden="true"
-                  className="mt-0.5 shrink-0 text-accent-400"
+                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ring-1 ring-accent-400/60"
                 />
                 <span className="leading-relaxed">{feature}</span>
               </li>

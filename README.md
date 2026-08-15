@@ -20,27 +20,27 @@ npm run dev
 ## Editing the content
 
 Everything on the page comes from **[`src/data/site.ts`](src/data/site.ts)** — profile,
-socials, skills, projects, timeline, AI track. Change the data, the UI follows. In
-particular, adding a project is one array entry:
+socials, skills, projects, timeline, AI track. Change the data, the UI follows. The
+Projects section renders the `projects` array, which currently holds Hasino alone and
+is framed as work in progress rather than a finished portfolio. Adding another is one
+array entry:
 
 ```ts
-export const moreProjects: Project[] = [
+export const projects: Project[] = [
   {
     id: 'my-project',
     name: 'My Project',
     tagline: 'One line on what it is',
     description: '…',
-    status: 'Live',
+    badge: 'Currently Building',   // omit for no badge
+    status: 'In active development · not finished',
     tech: ['React', 'Node.js'],
-    features: ['…'],
-    liveUrl: null,   // null hides / disables the button — nothing is invented
-    repoUrl: null,
+    buildingNow: ['…'],            // scope in progress, not shipped features
+    liveUrl: null,                 // null disables the button — nothing is invented
+    repoUrl: null,                 // null hides the GitHub button entirely
   },
 ]
 ```
-
-Set `flagship: true` on a project in the `projects` array to give it the
-"Flagship Project" badge and the large two-column card.
 
 ## Links (URLs are opt-in)
 
@@ -50,10 +50,9 @@ Copy `.env.example` to `.env` and fill in whichever you have:
 ```
 VITE_LINKEDIN_URL=       VITE_HASINO_LIVE_URL=
 VITE_GITHUB_URL=         VITE_HASINO_REPO_URL=
-VITE_X_URL=              VITE_DOCDOOR_LIVE_URL=
-VITE_LEETCODE_URL=       VITE_DOCDOOR_REPO_URL=
-VITE_EMAIL=              VITE_PORTFOLIO_LIVE_URL=
-                         VITE_PORTFOLIO_REPO_URL=
+VITE_X_URL=
+VITE_LEETCODE_URL=
+VITE_EMAIL=
 ```
 
 Until a value is set, that social icon renders dimmed and non-interactive, and the

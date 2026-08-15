@@ -24,7 +24,7 @@ const focus = [
   {
     icon: Rocket,
     title: 'Real products & startups',
-    body: 'Shipping things people can actually open, use and complain about.',
+    body: 'Building something people can actually open and use, not another demo.',
   },
 ]
 
@@ -34,7 +34,7 @@ export function About() {
       id="about"
       eyebrow="About"
       title="I like turning ideas into things that actually run"
-      description="I'm a Computer Science & AI student who'd rather build a rough working product than a polished plan. Most of what I know came from shipping something, breaking it, and figuring out why."
+      description="I'm a Computer Science & AI student who'd rather build a rough working product than a polished plan. Most of what I know came from building something, breaking it, and figuring out why."
     >
       <div className="grid gap-8 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
         <div className="space-y-6 text-base leading-relaxed text-muted sm:text-lg">
