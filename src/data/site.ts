@@ -267,6 +267,12 @@ export const timeline: Milestone[] = [
     description: 'Relational modelling with PostgreSQL and Prisma, plus the migrations and constraints that keep data honest.',
   },
   {
+    id: 'docdoor',
+    title: 'Worked on DocDoor',
+    description:
+      'An OPD booking and live queue idea for clinics — where I first worked through bookings, queues and the panels around them.',
+  },
+  {
     id: 'hasino',
     title: 'Started building Hasino',
     description:
